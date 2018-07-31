@@ -44,7 +44,7 @@ cp linux/arch/arm/boot/dts/imx6qp-mntreform.dtb target
 
 sudo umount target
 
-dd if=u-boot.imx of=/dev/loop0 bs=1k seek=1
+dd if=./u-boot/u-boot.imx of=/dev/loop0 bs=1k seek=1
 
 # detach the image
 sudo udisksctl loop-delete -b /dev/loop0
