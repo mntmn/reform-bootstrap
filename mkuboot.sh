@@ -1,10 +1,8 @@
 #!/bin/sh
 
-git clone https://github.com/mntmn/u-boot
+#git clone --depth 1 https://github.com/mntmn/u-boot -b mntreform
 
 cd u-boot
-
-git checkout mntreform
 
 cp mntreform-config .config
 
