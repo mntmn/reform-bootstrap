@@ -1,19 +1,21 @@
 #!/bin/sh
 
-git clone --depth 1 git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
-git clone https://github.com/mntmn/reform-linux
-
-cp ./reform-linux/imx6qp-mntreform.dts ./linux/arch/arm/boot/dts/
-cp ./reform-linux/imx6qdl-mntreform.dtsi ./linux/arch/arm/boot/dts/
-
-cp ./reform-linux/kernel-config ./linux/.config
+set -x
+set -e
 
 export ARCH=arm
 export LOADADDR=0x10008000
 export CROSS_COMPILE=arm-linux-gnueabihf-
 
+PATCHFILE=../reform-linux/drm-flip-done-timeout-workaround.patch
+
 cd linux
-patch -p1 < ../reform-linux/drm-flip-done-timeout-workaround.patch
+if ! patch -Rsfp1 --dry-run <$PATCHFILE; then
+  patch -p1 <$PATCHFILE
+else
+  echo "Kernel already patched."
+fi
+
 make -j4 zImage imx6qp-mntreform.dtb
 
 cd ..
