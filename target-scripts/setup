@@ -1,0 +1,7 @@
+#!/bin/sh
+
+date -s "2018-08-02"
+mount /proc
+rm -rf /var/run/*
+/var/lib/dpkg/info/dash.preinst install
+dpkg --configure -a

@@ -39,7 +39,22 @@ sudo /sbin/mkfs.ext4 -q /dev/loop0p1
 sudo mount -t ext4 /dev/loop0p1 target
 
 # create debian userland
-/usr/sbin/multistrap -d target-userland -f multistrap.conf
+sudo /usr/sbin/multistrap -d target-userland -f multistrap.conf
+sudo cp target-userland/usr/share/base-passwd/group.master target-userland/etc/group
+sudo cp etc-templates/passwd target-userland/etc/passwd
+sudo cp etc-templates/inittab target-userland/etc
+sudo cp etc-templates/shadow target-userland/etc
+sudo cp etc-templates/gshadow target-userland/etc
+sudo cp etc-templates/fstab target-userland/etc
+sudo cp etc-templates/hosts target-userland/etc
+sudo cp etc-templates/resolv.conf target-userland/etc
+sudo cp etc-templates/network-interfaces target-userland/etc/network/interfaces
+sudo cp etc-templates/motd target-userland/etc
+sudo cp etc-templates/common-* target-userland/etc/pam.d
+sudo chown root:root -R target-userland/bin target-userland/usr target-userland/sbin target-userland/lib target-userland/sys target-userland/etc target-userland/var target-userland/root
+sudo chown root:shadow target-userland/etc/shadow
+sudo chown root:shadow target-userland/etc/gshadow
+sudo cp target-scripts/* target-userland/root/
 
 # install debian userland in image
 sudo cp -av target-userland/* target/
@@ -62,4 +77,3 @@ sudo dd if=./u-boot/u-boot.imx of=/dev/loop0 bs=1k seek=1
 sudo udisksctl loop-delete -b /dev/loop0
 
 echo Reform system image created: reform-system.img
-
