@@ -69,10 +69,9 @@ sudo cp target-scripts/.xinitrc target-userland/root/
 sudo cp -Rv reform target-userland/root/
 # inception!
 sudo mkdir -p target-userland/root/sources
-sudo cp -Rv reform-bootstrap target-userland/root/sources/
-sudo cp -Rv reform-linux target-userland/root/sources/
-sudo cp -Rv linux target-userland/root/sources/
-sudo cp -Rv u-boot target-userland/root/sources/
+sudo cp -Rv reform target-userland/root/sources/
+sudo cp *.bundle target-userland/root/sources/
+sudo cp -Rv pdfs target-userland/root/
 
 sudo mv target-userland/root/reformd-init-script.sh target-userland/etc/init.d/reformd
 sudo cp etc-templates/xorg.conf target-userland/etc/X11

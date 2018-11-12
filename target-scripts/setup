@@ -77,9 +77,9 @@ echo Done.
 echo
 echo "You can issue the following commands to control reformd:"
 echo
-echo "  /etc/init.d reformd status  # to check the status and get battery information"
-echo "  /etc/init.d reformd stop    # to stop the service"
-echo "  /etc/init.d reformd start   # to start the service"
+echo "  /etc/init.d/reformd status  # to check the status and get battery information"
+echo "  /etc/init.d/reformd start   # to start the service"
+echo "  /etc/init.d/reformd stop    # to stop the service"
 echo
 
 echo "4. Configure the network -------------------------------------------------------"

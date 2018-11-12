@@ -15,7 +15,7 @@ if [ ! -f u-boot/Makefile ]; then
   git clone --depth 1 https://github.com/mntmn/u-boot -b mntreform
 fi
 
-if [ ! -f reform ]; then
+if [ ! -f reform/README.md ]; then
   git clone https://github.com/mntmn/reform
 fi
 
