@@ -1,1 +1,2 @@
-none /proc proc rw,auto 0 0
+proc           /proc proc nosuid,noexec,nodev 0 0
+/dev/mmcblk0p1 /boot vfat defaults,rw         0 0

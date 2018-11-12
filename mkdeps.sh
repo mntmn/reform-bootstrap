@@ -11,13 +11,15 @@ if [ ! -f reform-linux/kernel-config ]; then
   git clone https://github.com/mntmn/reform-linux
 fi
 
-if [ ! -f ./linux/arch/arm/boot/dts/imx6qp-mntreform.dts ]; then  
-  cp ./reform-linux/imx6qp-mntreform.dts ./linux/arch/arm/boot/dts/
-  cp ./reform-linux/imx6qdl-mntreform.dtsi ./linux/arch/arm/boot/dts/
-  cp ./reform-linux/kernel-config ./linux/.config
-fi
-
 if [ ! -f u-boot/Makefile ]; then
   git clone --depth 1 https://github.com/mntmn/u-boot -b mntreform
 fi
 
+if [ ! -f reform ]; then
+  git clone https://github.com/mntmn/reform
+fi
+
+# TODO secure distribution
+if [ ! -f reform-usrlocal.tar.gz ]; then
+  wget -O reform-usrlocal.tar.gz http://dump.mntmn.com/reform-usrlocal-20181110.tar.gz
+fi

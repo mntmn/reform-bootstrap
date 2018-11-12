@@ -1,7 +1,113 @@
-#!/bin/sh
+#!/bin/bash
 
-date -s "2018-08-02"
-mount /proc
-rm -rf /var/run/*
-/var/lib/dpkg/info/dash.preinst install
-dpkg --configure -a
+if [ ! -f /root/.reform-setup-phase-1-completed ]; then
+
+    echo
+    echo "Hello."
+    echo
+    echo "Welcome to the MNT Reform 0.4 setup. This script will run each time you log in"
+    echo "as the root user until the process is completed once. If you ever want to run it"
+    echo "again, enter  /root/setup  in the console."
+    echo
+    echo "Let's do the following things:"
+    echo
+    echo "1. Finish the Debian packages setup, then reboot"
+    echo "2. Set the date and time"
+    echo "3. Install reformd (fan/battery/lid service)"
+    echo "4. Configure the network"
+    echo
+    read -p "Press return to start." val
+
+    echo
+    echo "1. Finish the Debian packages setup --------------------------------------------"
+    echo
+
+    mount /proc
+    rm -rf /var/run/*
+    /var/lib/dpkg/info/dash.preinst install
+    dpkg --configure -a
+
+    echo "1" > /root/.reform-setup-phase-1-completed
+
+    sync
+    echo "The system will now reboot..."
+    reboot
+    exit
+
+else
+
+    echo
+    echo "Hello."
+    echo
+    echo "Let's finish the MNT Reform 0.4 setup:"
+    echo
+    echo "1. (DONE) Finish the Debian packages setup, then reboot"
+    echo "2. Set the date and time"
+    echo "3. Install reformd (fan/battery/lid service)"
+    echo "4. Configure the network"
+    echo
+    read -p "Press return to start." val
+    
+fi
+
+echo
+echo "2. Set the date and time -------------------------------------------------------"
+echo
+echo "Reform 0.4 does not have a real time clock (RTC), so you have to set the clock"
+echo "manually, or preferably, synchronize it with NTP time servers. If Reform is"
+echo "connected to the internet, the time will adjust itself automatically at some"
+echo "point."
+echo
+
+echo "Please enter your local date and time in the format 2018-11-04 15:00:"
+read -p "" val
+date -s "${val}"
+
+echo
+echo "The date and time are now set to:"
+date
+echo
+
+echo "3. Install reformd (fan/battery/lid service) -----------------------------------"
+echo
+
+update-rc.d reformd defaults
+echo Done.
+
+echo
+echo "You can issue the following commands to control reformd:"
+echo
+echo "  /etc/init.d reformd status  # to check the status and get battery information"
+echo "  /etc/init.d reformd stop    # to stop the service"
+echo "  /etc/init.d reformd start   # to start the service"
+echo
+
+echo "4. Configure the network -------------------------------------------------------"
+echo
+echo "The easiest way to get online is to plug a network cable into the ethernet port"
+echo "and then booting Reform. You can check the IP status by issuing:"
+echo
+echo "  ifconfig eth0"
+echo
+echo "If the eth0 interface doesn't have an IP address, you can try to get one via"
+echo "DHCP by executing:"
+echo
+echo "  dhclient eth0"
+echo
+echo "To configure a WiFi card (if you have one), use the command:"
+echo
+echo "  wicd-curses"
+echo
+echo "If you need help, you have several options:"
+echo
+echo "  - Read the printed user manual "
+echo "    or the online version at https://mntmn.com/reform/handbook"
+echo "  - Type  man  and the name of a command, i.e.  man apt"
+echo "  - Ask questions in the IRC channel #reform on irc.freenode.net"
+echo "  - Write an email to lukas@mntmn.com"
+echo
+echo "Good luck and enjoy your Reform!"
+echo
+
+echo "1" > /root/.reform-setup-completed
+
