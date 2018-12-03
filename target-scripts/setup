@@ -31,7 +31,7 @@ if [ ! -f /root/.reform-setup-phase-1-completed ]; then
 
     sync
     echo "The system will now reboot..."
-    reboot
+    exec reboot
     exit
 
 else
@@ -77,9 +77,10 @@ echo Done.
 echo
 echo "You can issue the following commands to control reformd:"
 echo
-echo "  /etc/init.d/reformd status  # to check the status and get battery information"
-echo "  /etc/init.d/reformd start   # to start the service"
-echo "  /etc/init.d/reformd stop    # to stop the service"
+echo "  /etc/init.d/reformd status # to check service status"
+echo "  /etc/init.d/reformd start  # to start the service"
+echo "  /etc/init.d/reformd stop   # to stop the service"
+echo "  tail -f /var/log/reformd   # to check battery status"
 echo
 
 echo "4. Configure the network -------------------------------------------------------"
@@ -98,6 +99,10 @@ echo "To configure a WiFi card (if you have one), use the command:"
 echo
 echo "  wicd-curses"
 echo
+echo "To start a graphical (Xorg) environment, execute:"
+echo
+echo "  xinit"
+echo
 echo "If you need help, you have several options:"
 echo
 echo "  - Read the printed user manual "
@@ -110,4 +115,6 @@ echo "Good luck and enjoy your Reform!"
 echo
 
 echo "1" > /root/.reform-setup-completed
+
+/etc/init.d/reformd start
 
