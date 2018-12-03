@@ -1,0 +1,121 @@
+<html>
+<head>
+<style>
+tr td:first-child {
+  font-weight: bold;
+  padding-right: 10px;
+}
+body {
+  margin: 50px;
+  max-width: 600px;
+  font-size: 13pt;
+}
+</style>
+</head>
+<body>
+<p>
+Hi!
+</p>
+
+<p>
+You can scroll text in this window with the arrow keys.
+</p>
+
+<p>
+The window manager you're looking at is called <a href="https://i3wm.org">i3</a>. It might be unfamiliar to you at first, but once you get used to it, it will be fast and fun to use.
+</p>
+
+<p>
+The most important things to know:
+</p>
+
+<p>
+i3 is a <i>tiling</i> window manager. That means that if you open a new window, i3 will try to fit it on your screen, dividing the space up for all windows equally. You can still resize the windows like you want. But usually it makes more sense to shift a window to its own fullscreen workspace.
+</p>
+
+<p>
+You control i3 mostly with the keyboard. The most important key is the modifier key, by default "Super". On Reform, this is <b>the key next to Super with the MNT logo engraved</b>.
+</p>
+
+<p>
+You can switch workspaces by pressing <b>[Super-1], [Super-2], [Super-3]</b> and so on.
+</p>
+
+<p>
+You can send a window to another workspace by pressing <b>[Super-Shift-1], [Super-Shift-2]</b>, ... you get the idea.
+</p>
+
+<p>
+In the lower left corner you can see an indicator showing which workspace you are on and how many there are currently. You can also click on these numbers.
+</p>
+
+<p>
+<b>[Super-d]</b> will open an input menu at the top of the screen that you can use to launch applications by typing their name. When you start typing, dmenu will guess which application you mean.
+</p>
+
+<p>
+You can launch a new terminal by pressing <b>[Super-Return]</b>.
+</p>
+
+<p>
+Try launching <i>pcmanfm</i> using the dmenu. Pcmanfm is a file manager that you can use to explore the system. It also has an "Applications" section where you can discover installed applications.
+</p>
+
+<p>
+<b>[Super-Shift-q]</b> closes the active window/application.
+</p>
+
+<p>
+Some applications to try:
+</p>
+
+<table>
+<tr><td>
+pcmanfm                 </td><td>File Manager
+</td></tr><tr><td>
+wicd-gtk                </td><td>Network Setup
+</td></tr><tr><td>
+gedit, emacs, gvim      </td><td>Text editors
+</td></tr><tr><td>
+firefox                 </td><td>Web Browser
+</td></tr><tr><td>
+claws-mail              </td><td>Email Client
+</td></tr><tr><td>
+gnumeric                </td><td>Spreadsheet
+</td></tr><tr><td>
+minetest                </td><td>3D Sandbox Minig/Crafting Game 
+</td></tr><tr><td>
+meshlab                 </td><td>3D Model Viewer
+</td></tr><tr><td>
+inkscape, gimp, grafx2  </td><td>Graphics
+</td></tr><tr><td>
+milkytracker            </td><td>Music Tracker
+</td></tr><tr><td>
+kicad                   </td><td>Electronics
+</td></tr><tr><td>
+lxappearance            </td><td>Change Look &amp; Feel
+</td></tr><tr><td>
+sakura                  </td><td>Terminal
+</td></tr></table>
+
+<p>
+You can see all i3 shortcuts ("bindings") and customize them by editing the file /root/.config/i3/config. You can customize the status bar by editing /root/.config/i3status.conf.
+</p>
+
+<p>
+Also, make sure to check out the files in /root/reform. 
+</p>
+
+<p>
+To learn more about i3, execute <i>man i3</i> in a terminal.
+</p>
+
+<p>
+If you want to replace i3 with something else (like <i>openbox</i>), you can edit /root/.xinitrc. There, you can also remove this help text being shown on startup. Quit X by executing "killall X" and start it again using "xinit".
+</p>
+
+<p>
+Good luck!
+</p>
+</body>
+</html>
