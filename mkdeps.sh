@@ -21,5 +21,5 @@ fi
 
 # TODO secure distribution
 if [ ! -f reform-usrlocal.tar.gz ]; then
-  wget -O reform-usrlocal.tar.gz http://dump.mntmn.com/reform-usrlocal-20181110.tar.gz
+  wget -O reform-usrlocal.tar.gz http://dump.mntmn.com/reform-usrlocal-20181114.tar.gz
 fi
