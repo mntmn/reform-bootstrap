@@ -64,13 +64,20 @@ sudo chown root:root -R target-userland/bin target-userland/usr target-userland/
 sudo chown root:shadow target-userland/etc/shadow
 sudo cp target-scripts/* target-userland/root/
 sudo cp target-scripts/.bash_profile target-userland/root/
+sudo cp reform/reformd/reformd.sh target-userland/root/
+# X startup config
 sudo cp target-scripts/.xinitrc target-userland/root/
+# i3 default config
+sudo mkdir -p target-userland/root/.config/i3
+sudo cp etc-templates/i3_config target-userland/root/.config/i3/config
+sudo cp etc-templates/i3status.conf target-userland/root/.config/
 # Reform sources
 sudo cp -Rv reform target-userland/root/
 # inception!
 sudo mkdir -p target-userland/root/sources
 sudo cp -Rv reform target-userland/root/sources/
-sudo cp *.bundle target-userland/root/sources/
+sudo cp -Rv reform-linux target-userland/root/sources/
+sudo cp -Rv reform-userland-src target-userland/root/sources/
 sudo cp -Rv pdfs target-userland/root/
 
 sudo mv target-userland/root/reformd-init-script.sh target-userland/etc/init.d/reformd
@@ -82,6 +89,10 @@ sudo tar --directory ./target-userland -xf reform-usrlocal.tar.gz -v -z
 
 # install debian userland in image
 sudo cp -av target-userland/* target/
+
+# install the manpage
+sudo mkdir -p target/usr/local/share/man/man1
+sudo cp reform/handbook/build/man/reform.1 target/usr/local/share/man/man1
 
 # install custom kernel
 # mkkernel.sh needs to run before. this creates zImage and imx6qp-mntreform.dtb.

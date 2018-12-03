@@ -13,12 +13,12 @@ cp ./reform-linux/kernel-config ./linux/.config
 
 cd linux
 
-PATCHFILE=../reform-linux/drm-flip-done-timeout-workaround.patch
-if ! patch -Rsfp1 --dry-run <$PATCHFILE; then
-  patch -p1 <$PATCHFILE
-else
-  echo "Kernel already patched ($PATCHFILE)."
-fi
+#PATCHFILE=../reform-linux/drm-flip-done-timeout-workaround.patch
+#if ! patch -Rsfp1 --dry-run <$PATCHFILE; then
+#  patch -p1 <$PATCHFILE
+#else
+#  echo "Kernel already patched ($PATCHFILE)."
+#fi
 
 PATCHFILE=../reform-linux/0017-pci-fix-suspend-on-i.MX6.patch
 if ! patch -Rsfp1 --dry-run <$PATCHFILE; then
